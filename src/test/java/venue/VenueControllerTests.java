@@ -35,5 +35,4 @@ public class VenueControllerTests {
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.venueName").value("Terminal West"));
     }
-
 }
