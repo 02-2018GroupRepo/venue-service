@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import venue.dao.VenueDao;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -20,20 +22,18 @@ public class VenueControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
+    private VenueDao venueDao;
 
     @Test
-    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
-
-        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
+    public void noParamVenueShouldReturnBadRequestMessage() throws Exception {
+        this.mockMvc.perform(get("/venue")).andDo(print()).andExpect(status().isBadRequest());        
     }
 
     @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
-
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+    public void paramVenueNameShouldReturnCorrectVenue() throws Exception {
+        this.mockMvc.perform(get("/venue").param("name", "Terminal West"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+                .andExpect(jsonPath("$.venueName").value("Terminal West"));
     }
 
 }

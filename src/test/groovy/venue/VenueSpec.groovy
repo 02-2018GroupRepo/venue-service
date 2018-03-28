@@ -10,6 +10,7 @@ class VenueSpec extends Specification {
 	def "Venue information"() {
 		given: "A venue"
 		Venue venue = new Venue(id, "Terminal West", "123 West Elm Street", true, "Cirque du Soleil", 800);
+		
 		when: "Information is requested"
 		long venueId = venue.getId();
 		String venueName = venue.getVenueName();
@@ -17,6 +18,7 @@ class VenueSpec extends Specification {
 		boolean parking = venue.getParking();
 		String event = venue.getEvent();
 		int capacity = venue.getCapacity();
+		
 		then: "Information should match original values"
 		venueId == 1;
 		venueName.equalsIgnoreCase("Terminal West");

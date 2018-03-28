@@ -1,18 +1,27 @@
 package venue.controller;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import venue.dao.VenueDao;
 import venue.model.Venue;
 
 @RestController
 public class VenueController {
+	@Autowired
+	private VenueDao venueDao;
 	
-	private final Venue terminalWest = new Venue(1, "Terminal West", "123 West Elm Street", true, "Cirque du Soleil", 800);
-
+	@RequestMapping("/venues")
+    public ArrayList<Venue> venues() {
+    	return venueDao.getVenues();
+    }
+	
     @RequestMapping("/venue")
-    public Venue venue(@RequestParam(value="name", defaultValue="Please insert venue name") String venueName) {
-        return terminalWest;
+    public Venue venue(@RequestParam(value="name", required=true) String venueName) {
+    	return (Venue) venueDao.getVenueByName(venueName);
     }
 }
