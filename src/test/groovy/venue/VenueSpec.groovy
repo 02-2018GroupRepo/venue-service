@@ -1,7 +1,6 @@
 package venue
 
 import java.util.concurrent.atomic.AtomicLong
-
 import spock.lang.Specification
 import venue.model.Venue
 

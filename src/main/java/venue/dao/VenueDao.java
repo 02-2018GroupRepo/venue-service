@@ -1,11 +1,8 @@
 package venue.dao;
 
 import org.springframework.stereotype.Component;
-
 import venue.model.Venue;
-
 import java.util.ArrayList;
-
 import javax.annotation.PostConstruct;
 
 @Component
