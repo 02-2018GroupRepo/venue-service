@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicLong
 import spock.lang.Specification
 import venue.model.Venue
 
-class VenueSpec extends Specification {
+class VenueModelSpec extends Specification {
 	private final long id = 1;
 	def "Venue information"() {
 		given: "A venue"
