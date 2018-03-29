@@ -20,6 +20,6 @@ public class VenueController {
 	
     @RequestMapping("/venue")
     public Venue venue(@RequestParam(value="name", required=true) String venueName) {
-    	return (Venue) venueService.getVenueByName(venueName);
+    	return venueService.getVenueByName(venueName);
     }
 }
