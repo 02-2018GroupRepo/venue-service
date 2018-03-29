@@ -11,9 +11,9 @@ public class VenueDao {
 	
 	@PostConstruct
 	public void init() {
-		Venue terminalWest = new Venue(1, "Terminal West", "123 West Elm Street", true, "Cirque du Soleil", 800);
-		Venue masquerade = new Venue(2, "Masquerade", "123 Peachtree Street", true, "Slim Shady", 300);
-		Venue phillipsArena = new Venue(3, "Phillips Arena", "123 Phillips Drive", false, "Bon Jovi", 21000);
+		Venue terminalWest = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
+		Venue masquerade = new Venue(2, "Masquerade", "123 Peachtree Street", true, 2, 300);
+		Venue phillipsArena = new Venue(3, "Phillips Arena", "123 Phillips Drive", false, 3, 21000);
 		venues.add(terminalWest);
 		venues.add(masquerade);
 		venues.add(phillipsArena);

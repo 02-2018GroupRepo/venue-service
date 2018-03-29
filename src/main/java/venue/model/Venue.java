@@ -6,15 +6,15 @@ public class Venue {
     private final String venueName;
     private final String address;
     private final boolean parking;
-    private final String event;
+    private final int eventId;
     private final int capacity;
 
-    public Venue(long id, String venueName, String address, boolean parking, String event, int capacity) {
+    public Venue(long id, String venueName, String address, boolean parking, int eventId, int capacity) {
     	this.id = id;
     	this.venueName = venueName;
         this.address = address;
         this.parking = parking;
-        this.event = event;
+        this.eventId = eventId;
         this.capacity = capacity;
     }
 
@@ -34,8 +34,8 @@ public class Venue {
         return parking;
     }
     
-    public String getEvent() {
-        return event;
+    public int getEventId() {
+        return eventId;
     }
     
     public int getCapacity() {

@@ -10,7 +10,7 @@ class VenueDaoSpec extends Specification {
 		VenueDao venueDao = new VenueDao();
 		
 		and: "Venue"
-		Venue venue = new Venue(4, "Verizon Wireless Amphitheater", "123 Blep Street", true, "Deadmau5", 1200);
+		Venue venue = new Venue(4, "Verizon Wireless Amphitheater", "123 Blep Street", true, 1, 1200);
 		venueDao.venues.add(venue);
 		
 		when: "You request a venue"
@@ -25,8 +25,8 @@ class VenueDaoSpec extends Specification {
 		VenueDao venueDao = new VenueDao();
 		
 		and: "Venue"
-		Venue venue1 = new Venue(4, "Verizon Wireless Amphitheater", "123 Blep Street", true, "Deadmau5", 1200);
-		Venue venue2 = new Venue(5, "Centennial Olympic Park", "123 Olympic Avenue", true, "Pink Floyd", 1200);
+		Venue venue1 = new Venue(4, "Verizon Wireless Amphitheater", "123 Blep Street", true, 1, 1200);
+		Venue venue2 = new Venue(5, "Centennial Olympic Park", "123 Olympic Avenue", true, 2, 1200);
 		ArrayList<Venue> venueList = new ArrayList<Venue>();
 		venueList.add(venue1);
 		venueList.add(venue2);

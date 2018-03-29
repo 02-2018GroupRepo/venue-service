@@ -12,7 +12,7 @@ class VenueServiceSpec extends Specification {
 		and: "Venue dao"
 		VenueDao venueDao = Stub(VenueDao.class);
 		and: "Venue"
-		Venue venue = new Venue(1, "Terminal West", "123 West Elm Street", true, "Cirque du Soleil", 800);
+		Venue venue = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
 		
 		when: "You request a venue"
 		venueDao.getVenueByName("Terminal West") >> venue;
@@ -29,8 +29,8 @@ class VenueServiceSpec extends Specification {
 		and: "Venue dao"
 		VenueDao venueDao = Stub(VenueDao.class);
 		and: "ArrayList of venues"
-		Venue venue1 = new Venue(1, "Terminal West", "123 West Elm Street", true, "Cirque du Soleil", 800);
-		Venue venue2 = new Venue(2, "Masquerade", "123 Peachtree Street", true, "Slim Shady", 300);
+		Venue venue1 = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
+		Venue venue2 = new Venue(2, "Masquerade", "123 Peachtree Street", true, 2, 300);
 		ArrayList<Venue> venueList = new ArrayList<Venue>();
 		venueList.add(venue1);
 		venueList.add(venue2);

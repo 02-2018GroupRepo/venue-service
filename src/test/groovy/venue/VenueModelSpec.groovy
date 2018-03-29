@@ -8,14 +8,14 @@ class VenueModelSpec extends Specification {
 	private final long id = 1;
 	def "Venue information"() {
 		given: "A venue"
-		Venue venue = new Venue(id, "Terminal West", "123 West Elm Street", true, "Cirque du Soleil", 800);
+		Venue venue = new Venue(id, "Terminal West", "123 West Elm Street", true, 1, 800);
 		
 		when: "Information is requested"
 		long venueId = venue.getId();
 		String venueName = venue.getVenueName();
 		String address = venue.getAddress();
 		boolean parking = venue.getParking();
-		String event = venue.getEvent();
+		int eventId = venue.getEventId();
 		int capacity = venue.getCapacity();
 		
 		then: "Information should match original values"
@@ -23,7 +23,7 @@ class VenueModelSpec extends Specification {
 		venueName.equalsIgnoreCase("Terminal West");
 		address.equalsIgnoreCase("123 West Elm Street");
 		parking == true;
-		event.equalsIgnoreCase("Cirque du Soleil");
+		eventId == 1;
 		capacity == 800;
 	}
 }
