@@ -5,21 +5,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import venue.dao.VenueDao;
 import venue.model.Venue;
+import venue.service.VenueService;
 
 @RestController
 public class VenueController {
 	@Autowired
-	private VenueDao venueDao;
+	VenueService venueService;
 	
 	@RequestMapping("/venues")
     public ArrayList<Venue> venues() {
-    	return venueDao.getVenues();
+    	return venueService.getVenues();
     }
 	
     @RequestMapping("/venue")
     public Venue venue(@RequestParam(value="name", required=true) String venueName) {
-    	return (Venue) venueDao.getVenueByName(venueName);
+    	return (Venue) venueService.getVenueByName(venueName);
     }
 }

@@ -13,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import venue.dao.VenueDao;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -22,7 +20,6 @@ public class VenueControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
-    private VenueDao venueDao;
 
     @Test
     public void noParamVenueShouldReturnBadRequestMessage() throws Exception {
