@@ -45,4 +45,24 @@ public class VenueDao {
 	public void addVenue(Venue newVenue) {
 		venues.add(newVenue);
 	}
+	
+	public void updateVenue(String venueName, Venue updatedVenue) {
+		Venue retrievedVenue = null;
+		for (Venue venue: venues) {
+			if (venue.getVenueName().equalsIgnoreCase(venueName) ) {
+				retrievedVenue = venue;
+			}
+		}
+		venues.set(venues.indexOf(retrievedVenue), updatedVenue);
+	}
+	
+	public void deleteVenue(String venueName) {
+		Venue retrievedVenue = null;
+		for (Venue venue: venues) {
+			if (venue.getVenueName().equalsIgnoreCase(venueName) ) {
+				retrievedVenue = venue;
+			}
+		}
+		venues.remove(retrievedVenue);
+	}
 }

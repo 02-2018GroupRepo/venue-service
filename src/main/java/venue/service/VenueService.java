@@ -24,4 +24,12 @@ public class VenueService {
 	public void addVenue(Venue newVenue) {
 		venueDao.addVenue(newVenue);
 	}
+	
+	public void updateVenue(String venueName, Venue updatedVenue) {
+		venueDao.updateVenue(venueName, updatedVenue);
+	}
+	
+	public void deleteVenue(String venueName) {
+		venueDao.deleteVenue(venueName);
+	}
 }
