@@ -41,4 +41,8 @@ public class VenueDao {
 		}
 		return retrievedVenue;
 	}
+	
+	public void addVenue(Venue newVenue) {
+		venues.add(newVenue);
+	}
 }

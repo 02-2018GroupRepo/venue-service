@@ -20,4 +20,8 @@ public class VenueService {
 	public Venue getVenueByName(String name) {
 		return venueDao.getVenueByName(name);
 	}
+	
+	public void addVenue(Venue newVenue) {
+		venueDao.addVenue(newVenue);
+	}
 }
