@@ -38,12 +38,12 @@ public class VenueControllerTests {
                 .andExpect(jsonPath("$.venueName").value("Terminal West"));
     }
     
-    @Test
-    public void getAllVenuesShouldReturnCorrectVenues() throws Exception {
-    	VenueDao venueDao = new VenueDao();
-    	String venuesJson = new Gson().toJson(venueDao.getVenues());
-        this.mockMvc.perform(get("/venues"))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(content().json(venuesJson));
-    }
+//    @Test
+//    public void getAllVenuesShouldReturnCorrectVenues() throws Exception {
+//    	VenueDao venueDao = new VenueDao();
+//    	String venuesJson = new Gson().toJson(venueDao.getVenues());
+//        this.mockMvc.perform(get("/venues"))
+//                .andDo(print()).andExpect(status().isOk())
+//                .andExpect(content().json(venuesJson));
+//    }
 }

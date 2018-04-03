@@ -1,68 +1,42 @@
 package venue.dao;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import venue.model.Venue;
-import java.util.ArrayList;
-import javax.annotation.PostConstruct;
 
 @Component
 public class VenueDao {
-	private ArrayList<Venue> venues = new ArrayList<Venue>();
+	@Autowired
+	JdbcTemplate jdbcTemplate;
 	
-//	@PostConstruct
-//	public void init() {
-//		Venue terminalWest = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
-//		Venue masquerade = new Venue(2, "Masquerade", "123 Peachtree Street", true, 2, 300);
-//		Venue phillipsArena = new Venue(3, "Phillips Arena", "123 Phillips Drive", false, 3, 21000);
-//		venues.add(terminalWest);
-//		venues.add(masquerade);
-//		venues.add(phillipsArena);
-//	}
-	
-	public VenueDao() {
-		Venue terminalWest = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
-		Venue masquerade = new Venue(2, "Masquerade", "123 Peachtree Street", true, 2, 300);
-		Venue phillipsArena = new Venue(3, "Phillips Arena", "123 Phillips Drive", false, 3, 21000);
-		venues.add(terminalWest);
-		venues.add(masquerade);
-		venues.add(phillipsArena);
-	}
-	
-	public ArrayList<Venue> getVenues() {
+	public List<Venue> getVenues() {
+		String SQL = "SELECT id, venuename, address, parking, eventid, capacity FROM venue_practice";
+		List<Venue> venues = jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Venue.class));
 		return venues;
 	}
 	
-	public Venue getVenueByName(String name) {
-		Venue retrievedVenue = null;
-		for (Venue venue: venues) {
-			if (venue.getVenueName().equalsIgnoreCase(name) ) {
-				retrievedVenue = venue;
-			}
-		}
-		return retrievedVenue;
+	public Venue getVenueById(int id) {
+		String SQL = "SELECT id, venuename, address, parking, eventid, capacity FROM venue_practice WHERE id=" + id;
+		List<Venue> venue = jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Venue.class));
+		return venue.get(0);
 	}
 	
-	public void addVenue(Venue newVenue) {
-		venues.add(newVenue);
+	public void createVenue(Venue venue) {
+		String insertSQL = "INSERT INTO venue_practice VALUES (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(insertSQL, new Object[] {venue.getId(), venue.getVenueName(), venue.getAddress(), venue.isParking(), venue.getEventId(), venue.getCapacity()});
 	}
 	
-	public void updateVenue(String venueName, Venue updatedVenue) {
-		Venue retrievedVenue = null;
-		for (Venue venue: venues) {
-			if (venue.getVenueName().equalsIgnoreCase(venueName) ) {
-				retrievedVenue = venue;
-			}
-		}
-		venues.set(venues.indexOf(retrievedVenue), updatedVenue);
+	public void updateVenue(int id, Venue venue) {
+		String SQL = "UPDATE venue_practice SET id=?, venuename=?, address=?, parking=?, eventid=?, capacity=? WHERE id=" + id;
+		jdbcTemplate.update(SQL, new Object[] {venue.getId(), venue.getVenueName(), venue.getAddress(), venue.isParking(), venue.getEventId(), venue.getCapacity()});
 	}
 	
-	public void deleteVenue(String venueName) {
-		Venue retrievedVenue = null;
-		for (Venue venue: venues) {
-			if (venue.getVenueName().equalsIgnoreCase(venueName) ) {
-				retrievedVenue = venue;
-			}
-		}
-		venues.remove(retrievedVenue);
+	public void deleteVenue(int id) {
+		String SQL = "DELETE FROM venue_practice WHERE id=" + id;
+		jdbcTemplate.update(SQL);
 	}
 }

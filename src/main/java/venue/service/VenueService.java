@@ -1,6 +1,6 @@
 package venue.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,23 +13,23 @@ public class VenueService {
 	@Autowired
 	private VenueDao venueDao;
 	
-	public ArrayList<Venue> getVenues() {
+	public List<Venue> getVenues() {
 		return venueDao.getVenues();
 	}
 	
-	public Venue getVenueByName(String name) {
-		return venueDao.getVenueByName(name);
+	public Venue getVenueById(int id) {
+		return venueDao.getVenueById(id);
 	}
 	
-	public void addVenue(Venue newVenue) {
-		venueDao.addVenue(newVenue);
+	public void createVenue(Venue venue) {
+		venueDao.createVenue(venue);
 	}
 	
-	public void updateVenue(String venueName, Venue updatedVenue) {
-		venueDao.updateVenue(venueName, updatedVenue);
+	public void updateVenue(int id, Venue venue) {
+		venueDao.updateVenue(id, venue);
 	}
 	
-	public void deleteVenue(String venueName) {
-		venueDao.deleteVenue(venueName);
+	public void deleteVenue(int id) {
+		venueDao.deleteVenue(id);
 	}
 }

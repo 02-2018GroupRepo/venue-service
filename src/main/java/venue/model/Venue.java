@@ -2,7 +2,7 @@ package venue.model;
 
 public class Venue {
 
-    private long id;
+    private int id;
     private String venueName;
     private String address;
     private boolean parking;
@@ -11,7 +11,7 @@ public class Venue {
     
     public Venue() {}
     
-    public Venue(long id, String venueName, String address, boolean parking, int eventId, int capacity) {
+    public Venue(int id, String venueName, String address, boolean parking, int eventId, int capacity) {
     	this.id = id;
     	this.venueName = venueName;
         this.address = address;
@@ -24,7 +24,7 @@ public class Venue {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -1,6 +1,6 @@
 package venue.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import venue.model.Venue;
 import venue.service.VenueService;
@@ -20,30 +19,30 @@ public class VenueController {
 	VenueService venueService;
 	
 	@RequestMapping("/venues")
-    public ArrayList<Venue> venues() {
+    public List<Venue> venues() {
     	return venueService.getVenues();
     }
 	
-    @GetMapping("/venue/{name}")
-    public Venue venue(@PathVariable(name="name") String venueName) {
-    	return venueService.getVenueByName(venueName);
+    @GetMapping("/venue/{id}")
+    public Venue venue(@PathVariable(name="id") int id) {
+    	return venueService.getVenueById(id);
     }
     
     @PostMapping("/venue")
-    public String createVenue(@RequestBody Venue newVenue) {
-    	venueService.addVenue(newVenue);
+    public String createVenue(@RequestBody Venue venue) {
+    	venueService.createVenue(venue);
     	return "You have created a new venue!";
     }
     
-    @PutMapping("/venue/{name}")
-    public String updateVenue(@PathVariable(name = "name") String venueName, @RequestBody Venue updatedVenue) {
-    	venueService.updateVenue(venueName, updatedVenue);
-    	return "You have updated venue : " + venueName;
+    @PutMapping("/venue/{id}")
+    public String updateVenue(@PathVariable(name="id") int id, @RequestBody Venue venue) {
+    	venueService.updateVenue(id, venue);
+    	return "You have updated venue : " + id;
     }
     
-    @DeleteMapping("/venue/{name}")
-    public String deleteVenue(@PathVariable(name="name") String venueName) {
-    	venueService.deleteVenue(venueName);
-    	return "You have deleted venue: " + venueName;
+    @DeleteMapping("/venue/{id}")
+    public String deleteVenue(@PathVariable(name="id") int id) {
+    	venueService.deleteVenue(id);
+    	return "You have deleted venue: " + id;
     }
 }
