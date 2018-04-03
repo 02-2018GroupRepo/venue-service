@@ -26,8 +26,8 @@ public class VenueDao {
 	}
 	
 	public void createVenue(Venue venue) {
-		String insertSQL = "INSERT INTO venue_practice VALUES (?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(insertSQL, new Object[] {venue.getId(), venue.getVenueName(), venue.getAddress(), venue.isParking(), venue.getEventId(), venue.getCapacity()});
+		String SQL = "INSERT INTO venue_practice VALUES (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(SQL, new Object[] {venue.getId(), venue.getVenueName(), venue.getAddress(), venue.isParking(), venue.getEventId(), venue.getCapacity()});
 	}
 	
 	public void updateVenue(int id, Venue venue) {
