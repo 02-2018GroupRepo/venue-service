@@ -5,16 +5,15 @@ import spock.lang.Specification
 import venue.model.Venue
 
 class VenueModelSpec extends Specification {
-	private final long id = 1;
 	def "Venue information"() {
 		given: "A venue"
-		Venue venue = new Venue(id, "Terminal West", "123 West Elm Street", true, 1, 800);
+		Venue venue = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
 		
 		when: "Information is requested"
-		long venueId = venue.getId();
+		int venueId = venue.getId();
 		String venueName = venue.getVenueName();
 		String address = venue.getAddress();
-		boolean parking = venue.getParking();
+		boolean parking = venue.isParking();
 		int eventId = venue.getEventId();
 		int capacity = venue.getCapacity();
 		

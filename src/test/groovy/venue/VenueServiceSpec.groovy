@@ -15,9 +15,9 @@ class VenueServiceSpec extends Specification {
 		Venue venue = new Venue(1, "Terminal West", "123 West Elm Street", true, 1, 800);
 		
 		when: "You request a venue"
-		venueDao.getVenueByName("Terminal West") >> venue;
+		venueDao.getVenueById(1) >> venue;
 		venueService.venueDao = venueDao;
-		Venue retreivedVenue = venueService.getVenueByName("Terminal West");
+		Venue retreivedVenue = venueService.getVenueById(1);
 		
 		then: "Venue is returned"
 		retreivedVenue.equals(venue);

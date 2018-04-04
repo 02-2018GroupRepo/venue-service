@@ -1,5 +1,6 @@
 package venue.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ public class VenueDao {
 	
 	public List<Venue> getVenues() {
 		String SQL = "SELECT id, venuename, address, parking, eventid, capacity FROM venue_practice";
-		List<Venue> venues = jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Venue.class));
+		ArrayList<Venue> venues = (ArrayList<Venue>) jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Venue.class));
 		return venues;
 	}
 	
 	public Venue getVenueById(int id) {
 		String SQL = "SELECT id, venuename, address, parking, eventid, capacity FROM venue_practice WHERE id=" + id;
-		List<Venue> venue = jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Venue.class));
+		ArrayList<Venue> venue = (ArrayList<Venue>) jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Venue.class));
 		return venue.get(0);
 	}
 	
